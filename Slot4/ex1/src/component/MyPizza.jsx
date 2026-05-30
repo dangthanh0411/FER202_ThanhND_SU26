@@ -1,34 +1,38 @@
-//Tao function componet MyPizza
-//Hinh thi id,name,ten loai pizza,descreiption,gia cu, gia giam ,tang,
 import React from 'react';
-import { Card, Container, Row, Col } from 'react-bootstrap';
+import { Card, Badge, Button } from 'react-bootstrap';
 
-function MyPizza({pizza}) {
+function MyPizza({ pizza, onViewDetails }) {
     return (
-        <div>
-            {/* Hiển thị thông tin ID, Name, tên loại pizza, description,
-            hình ảnh pizza, giá cũ, giá giảm,tag trong 1 Card React-bootstrap,
-            chứa trong container react-bootstrap , có Row, Col */}
-            <Container>
-                <Row>
-                    <Col>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={pizza.imageSrc} />
-                            <Card.Body>
-                                <Card.Title>{pizza.name}</Card.Title>
-                                <Card.Text>
-                                    ID: {pizza.id} <br />
-                                    Description: {pizza.description} <br />
-                                    Old Price: {pizza.oldPrice} <br />
-                                    New Price: {pizza.newPrice} <br />
-                                    Tag: {pizza.tag}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+        <Card className="h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+            <Card.Img variant="top" src={pizza.imageSrc} style={{ height: '220px', objectFit: 'cover' }} />
+            <Card.Body className="d-flex flex-column p-4">
+                <Card.Title className="fw-bold fs-5 mb-1">{pizza.name}</Card.Title>
+                <div className="text-muted small mb-2">ID: {pizza.id}</div>
+                
+                <Card.Text className="text-secondary flex-grow-1" style={{ fontSize: '0.9rem' }}>
+                    {pizza.description}
+                </Card.Text>
+                
+                <div className="mt-3">
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                        <span className="fs-5 fw-bold text-danger">{pizza.newPrice}</span>
+                        <Badge bg="warning" text="dark" className="rounded-pill">{pizza.tag}</Badge>
+                    </div>
+                    
+                    <Button 
+                        style={{
+                            backgroundColor: '#FFE0B2', 
+                            color: '#BF360C',           
+                            borderColor: '#FFE0B2',     
+                        }}
+                        className="w-100 rounded-pill fw-bold"
+                        onClick={() => onViewDetails(pizza)}
+                    >
+                        View Details
+                    </Button>
+                </div>
+            </Card.Body>
+        </Card>
     );
 }
 

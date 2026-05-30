@@ -1,30 +1,24 @@
-//Tạo function component MyProfile
-//Hiển thị ID, name, email, Link github, avatar của bạn
 import React from 'react';
-import { Card, Container, Row, Col } from 'react-bootstrap';
-function MyProfile({profile}) {
+import { Card, Button } from 'react-bootstrap';
+
+function MyProfile({ profile }) {
     return (
-        <div>
-            {/* Hiển thị thông tin ID, name, email, Link github, avatar của bạn trong 1 Card React-bootstrap,
-            chứa trong container react-bootstrap , có Row, Col */}
-            <Container>
-                <Row>
-                    <Col>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={profile.avatarSrc} />
-                            <Card.Body>
-                                <Card.Title>{profile.name}</Card.Title>
-                                <Card.Text>
-                                    ID: {profile.id} <br />
-                                    Email: {profile.email} <br />
-                                    GitHub: <a href={profile.githubLink}>{profile.githubLink}</a>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+        <Card className="shadow-lg border-0" style={{ width: '22rem', borderRadius: '15px', overflow: 'hidden' }}>
+            <Card.Img variant="top" src={profile.avatarSrc} style={{ height: '320px', objectFit: 'cover' }} />
+            <Card.Body className="text-center p-4">
+                <Card.Title className="fw-bold fs-4 mb-1">{profile.name}</Card.Title>
+                <Card.Text className="text-muted mb-3">ID: {profile.id}</Card.Text>
+                
+                <div className="text-start bg-light p-3 rounded-3 mb-4" style={{ fontSize: '0.9rem' }}>
+                    <strong>Email:</strong> {profile.email}
+                </div>
+
+                <Button variant="dark" href={profile.githubLink} target="_blank" className="w-100 rounded-pill fw-semibold py-2">
+                    Truy cập GitHub
+                </Button>
+            </Card.Body>
+        </Card>
     );
 }
+
 export default MyProfile;

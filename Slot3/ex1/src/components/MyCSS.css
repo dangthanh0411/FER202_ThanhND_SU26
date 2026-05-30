@@ -1,0 +1,10 @@
+/*Chua cac style cho components Hello*/
+.hello {
+    color: black;
+    font-size: 20px;
+}
+.react {
+    color: blue;
+    font-size: 40px;
+    font-weight: bold;
+}

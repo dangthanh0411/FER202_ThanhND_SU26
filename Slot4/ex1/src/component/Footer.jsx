@@ -1,22 +1,23 @@
 import React from 'react';
-import MyProfile from './MyProfile'; // Nhúng MyProfile vào Footer
+import MyProfile from './MyProfile';
+import { Container } from 'react-bootstrap';
 
 function Footer() {
-const profile = {
+    const profile = {
         id: "DE190735",
         name: "DangThanh",
         email: "ndangthanh0411@gmail.com",
         githubLink: "https://github.com/dangthanh0411/FER202_ThanhND_SU26",
-        avatarSrc: "/images/images1.jpg"
+        avatarSrc: "/images/images1.jpg" 
     };
 
     return (
-        <>
-            {/* Viết code CSS cho footer canh cuối trang, nội dung đặt giữa trang */}
-            <footer style={{position: 'fixed', bottom: 0, width: '100%', textAlign: 'center'}}>
+        <div className="bg-light py-5 mt-5 border-top">
+            <Container className="d-flex justify-content-center">
                 <MyProfile profile={profile} />
-            </footer>
-        </>
+            </Container>
+        </div>
     );
 }
-    export default Footer;
+
+export default Footer;
